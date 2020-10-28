@@ -24,6 +24,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "./node_modules/@nebular/theme/styles/prebuilt/default.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -117,8 +120,13 @@
               "devServerTarget": "last-fm-test:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "last-fm-test"
 }

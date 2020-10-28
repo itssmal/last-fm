@@ -1,0 +1,44 @@
+<div *ngIf="alertText" class="position-fixed" style="z-index: 1">
+  <nb-alert status="warning" closable (close)="alertText = null">
+    {{alertText}}
+  </nb-alert>
+</div>
+
+<div class="container-fluid" *ngIf="!isLoading; else loader">
+  <h2 class="mb-4">Top Charts</h2>
+  <div class="row d-flex flex-wrap">
+    <div class="col m-auto track-div" *ngFor="let track of tracks">
+      <nb-card size="medium" (click)="navToTrackPage(track.url)">
+        <img [src]="track.image.length > 0 ? track.image[0]['#text'] : defaultImgSrc" alt="">
+        <h4>{{track.name}}</h4>
+        <p>{{track.artist.name}}</p>
+      </nb-card>
+    </div>
+  </div>
+</div>
+
+<nav *ngIf="!isLoading">
+  <ul class="pagination justify-content-center">
+
+    <li class="page-item"  *ngIf="page !== 1">
+      <a class="page-link">Previous</a>
+    </li>
+
+    <li class="page-item"
+        *ngFor="let index of paginationItems"
+        [class.active]="page === index">
+      <a class="page-link" (click)="onPageChange(index)">{{index}}</a>
+    </li>
+
+    <li class="page-item" *ngIf="page < collectionSize">
+      <a class="page-link" href="#">Next</a>
+    </li>
+
+  </ul>
+</nav>
+
+<ng-template #loader>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-grow text-warning" role="status"></div>
+  </div>
+</ng-template>

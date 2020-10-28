@@ -1,0 +1,115 @@
+h1, p {
+  font-family: 'Turret Road', cursive;
+  color: #ffcd57;
+  margin-bottom: 10px;
+}
+
+.col {
+  max-width: 342px;
+}
+
+input {
+  font-family: 'Turret Road', cursive;
+}
+
+nb-card {
+  background: transparent;
+  border: none;
+  height: 25rem !important;
+  cursor: pointer;
+  transition: 300ms;
+}
+nb-card:hover {
+  transition: 300ms ease-in-out;
+  transform: scale(1.1);
+}
+nb-card:hover img {
+  border: 1px solid #db8b00;
+  transition: 300ms ease-in-out;
+  box-shadow: none;
+}
+nb-card:hover h4, nb-card:hover p {
+  color: #db8b00;
+  transition: 300ms ease-in-out;
+}
+nb-card img {
+  border: 1px solid #ffcd57;
+  transition: 300ms;
+  box-shadow: 2px 1px 3px 0 #ffc94d73;
+}
+
+nb-card h4, nb-card p {
+  color: #db8b00;
+  margin: 2px;
+  font-family: 'Turret Road', cursive;
+  transition: 300ms;
+}
+
+.page-link {
+  color: #db8b00;
+  border: 1px solid #ffc94d;
+}
+.page-link:hover {
+  color: white;
+  background-color: #db8b00;
+  border: 1px solid #ffc94d;
+}
+
+.active .page-link {
+  background-color: #ffc94d;
+  color: white;
+  border-color: #ffc94d;
+}
+
+.search > div {
+  display: inline-block;
+  position: relative;
+}
+
+.search > div:after {
+  content: "";
+  background: #ffcd57;
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  transform: rotate(135deg);
+}
+
+.search > div > input {
+  color: #ffcd57;
+  font-size: 16px;
+  background: transparent;
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  border: solid 3px #ffcd57;
+  outline: none;
+  border-radius: 35px;
+  transition: width 0.5s;
+  cursor: pointer;
+}
+
+.search > div > input::placeholder {
+  color: #ffcd57;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.search > div > input:focus::placeholder {
+  opacity: 1;
+}
+
+.search > div > input:focus,
+.search > div > input:not(:placeholder-shown) {
+  width: 250px;
+}
+
+@media only screen and (max-width: 768px) {
+  .search > div > input:focus,
+  .search > div > input:not(:placeholder-shown) {
+    width: 10em;
+  }
+}
+
+

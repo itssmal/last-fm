@@ -1,0 +1,21 @@
+.header-title {
+  color: #ffc94d;
+  font-size: 2em;
+  padding-top: 2px;
+  font-weight: bolder;
+  font-style: italic;
+  font-family: 'Turret Road', cursive;
+  transition: 300ms ease-in-out;
+}
+
+nb-icon {
+  color: #ffc94d;
+  font-size: 2em;
+  transition: 300ms ease-in-out;
+}
+
+a:hover {
+  transition: 300ms ease-in-out;
+  transform: scale(1.1) translateY(3px);
+  color: #db8b00;
+}

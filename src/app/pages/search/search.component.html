@@ -1,0 +1,59 @@
+
+<div *ngIf="alertText" class="position-fixed" style="z-index: 1">
+  <nb-alert status="warning" closable (close)="alertText = null">
+    {{alertText}}
+  </nb-alert>
+</div>
+
+<div class="container-fluid" *ngIf="!isLoading; else loader">
+  <div class="row justify-content-between mb-4">
+    <div class="col">
+      <h1 class="m-auto">{{tracks.length > 0 ? 'Results' : 'Search tracks'}}</h1>
+    </div>
+    <div class="col d-flex align-items-center pb-3 justify-content-end">
+      <form [formGroup]="form" (ngSubmit)="search()">
+        <div class="search">
+          <div>
+            <input (ngModelChange)="onInputChange()" formControlName="searchQuery" placeholder="Search track"
+                   type="text">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="!isSearching; else loader">
+    <div class="row d-flex flex-wrap"
+         *ngIf="query; else startSearch">
+<!--      <nb-list>-->
+<!--        <nb-list-item *ngFor="let track of tracks">-->
+<!--          '{{ track.name }}', {{track.artist}}-->
+<!--        </nb-list-item>-->
+<!--      </nb-list>-->
+      <div class="col m-auto track-div" *ngFor="let track of tracks">
+              <nb-card size="medium" (click)="navToTrackPage(track.url)">
+                <img [src]="track.image[0]['#text'] && track.image[0]['#text'].length > 0 ? track.image[0]['#text'] : defaultImgSrc" alt="">
+                <h4>{{track.name}}</h4>
+                <p>{{track.artist}}</p>
+              </nb-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #startSearch>
+  <div class="mt-5 d-flex justify-content-center align-content-center">
+    <p>You may start search by clicking magnifier</p>
+  </div>
+</ng-template>
+
+<ng-template [ngIf]="hitEnterMessage.length > 0">
+  <div class="mt-5 d-flex justify-content-center align-content-center">
+    <p>{{hitEnterMessage}}</p>
+  </div>
+</ng-template>
+
+<ng-template #loader>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-grow text-warning" role="status"></div>
+  </div>
+</ng-template>
